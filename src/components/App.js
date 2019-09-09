@@ -6,7 +6,7 @@ import VideoList from './VideoList';
 class App extends React.Component
 {
 
-    state = { videos: [] };
+    state = { videos: [], selectedVideo: null };
 
     // Asynchronous function to get the search term a
     // and use it to get the data from youtube api. 
@@ -24,6 +24,12 @@ class App extends React.Component
         this.setState({videos: response.data.items})
     };
 
+    onVideoSelect = (video) =>
+    {
+        console.log('From the App!', video);
+
+    }
+
     render()
     {
         return (
@@ -31,7 +37,9 @@ class App extends React.Component
                 <SearchBar onFormSubmit = { this.onTermSubmit }/>
                 I have { this.state.videos.length } videos.
 
-                <VideoList videos={this.state.videos} />
+                <VideoList 
+                    onVideoSelect = { this.onVideoSelect }
+                    videos = {this.state.videos} />
             </div>
             );
     }
