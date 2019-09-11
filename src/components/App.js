@@ -26,6 +26,10 @@ class App extends React.Component {
 		this.setState({ selectedVideo: video });
 	};
 
+	componentDidMount() {
+		this.onTermSubmit("News");
+	}
+
 	render() {
 		return (
 			<div className="ui container" style={{ marginTop: "10px" }}>
